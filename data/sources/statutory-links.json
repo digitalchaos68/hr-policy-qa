@@ -1,0 +1,49 @@
+[
+  {
+    "title": "Annual Leave — Eligibility and Entitlement",
+    "url": "https://www.mom.gov.sg/employment-practices/leave/annual-leave/eligibility-and-entitlement",
+    "source_type": "statutory"
+  },
+  {
+    "title": "Sick Leave — Eligibility and Entitlement",
+    "url": "https://www.mom.gov.sg/employment-practices/leave/sick-leave/eligibility-and-entitlement",
+    "source_type": "statutory"
+  },
+  {
+    "title": "Maternity Leave — Eligibility and Entitlement",
+    "url": "https://www.mom.gov.sg/employment-practices/leave/maternity-leave/eligibility-and-entitlement",
+    "source_type": "statutory"
+  },
+  {
+    "title": "Paternity Leave",
+    "url": "https://www.mom.gov.sg/employment-practices/leave/paternity-leave",
+    "source_type": "statutory"
+  },
+  {
+    "title": "Childcare Leave — Eligibility and Entitlement",
+    "url": "https://www.mom.gov.sg/employment-practices/leave/childcare-leave/eligibility-and-entitlement",
+    "source_type": "statutory"
+  },
+  {
+    "title": "Hours of Work, Overtime and Rest Days",
+    "url": "https://www.mom.gov.sg/employment-practices/hours-of-work-overtime-and-rest-days",
+    "source_type": "statutory"
+  },
+  {
+    "title": "Public Holidays — Entitlement and Pay",
+    "url": "https://www.mom.gov.sg/employment-practices/public-holidays-entitlement-and-pay",
+    "source_type": "statutory"
+  },
+  {
+    "title": "Termination with Notice",
+    "url": "https://www.mom.gov.sg/employment-practices/termination-of-employment/termination-with-notice",
+    "source_type": "statutory"
+  },
+  {
+    "title": "How Do I Pay My CPF Contributions?",
+    "url": "https://www.cpf.gov.sg/service/article/how-do-i-pay-my-cpf-contributions",
+    "source_type": "statutory",
+    "mode": "local",
+    "file": "cpf-contributions.md"
+  }
+]
