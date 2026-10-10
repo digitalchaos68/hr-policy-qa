@@ -18,20 +18,26 @@ export const metadata: Metadata = {
   description: 'Cited answers on Singapore employment rules and a sample company handbook.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <ServiceWorkerRegister />
-        {children}
-      </body>
-    </html>
-  );
-}
+   const themeScript = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`;
+
+   export default function RootLayout({
+     children,
+   }: Readonly<{
+     children: React.ReactNode;
+   }>) {
+     return (
+       <html
+         lang="en"
+         className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+         suppressHydrationWarning
+       >
+         <head>
+           <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+         </head>
+         <body className="min-h-full flex flex-col" suppressHydrationWarning>
+           <ServiceWorkerRegister />
+           {children}
+         </body>
+       </html>
+     );
+   }
