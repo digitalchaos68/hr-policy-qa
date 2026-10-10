@@ -1,5 +1,5 @@
 import { google } from '@ai-sdk/google';
-import { streamText } from 'ai';
+import { createUIMessageStream, createUIMessageStreamResponse, streamText } from 'ai';
 import { createHash } from 'crypto';
 import { supabase } from '../../../../scripts/lib/supabase';
 import {
@@ -108,10 +108,22 @@ export async function POST(req: Request) {
   }
   const { results, refuse } = retrieval;
 
-  if (refuse) {
-    return json({ answerable: false, answer: REFUSAL_MESSAGE, sources: [] }, 200);
-  }
-
+       if (refuse) {
+         if (logId) {
+           await supabase
+             .from('query_log')
+             .update({ answer: REFUSAL_MESSAGE, refused: true, latency_ms: Date.now() - started })
+             .eq('id', logId);
+         }
+         const stream = createUIMessageStream({
+           execute: ({ writer }) => {
+             writer.write({ type: 'text-start', id: 'refusal' });
+             writer.write({ type: 'text-delta', id: 'refusal', delta: REFUSAL_MESSAGE });
+             writer.write({ type: 'text-end', id: 'refusal' });
+           },
+         });
+         return createUIMessageStreamResponse({ stream });
+       }
   // Stream the answer, then record it in the log
   const result = streamText({
     model: google(ANSWER_MODEL),

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "s01",
+    "category": "statutory",
+    "question": "How many days of annual leave is an employee entitled to in their first year of service?",
+    "shouldRefuse": false,
+    "topSimilarity": 0.735978484153753,
+    "retrievalHit": true,
+    "citationOk": true,
+    "answerCorrect": true,
+    "refusalOk": null,
+    "pass": true,
+    "failReasons": [],
+    "answer": "In your first year of service:\n\n*   **Statutory entitlement:** You are entitled to 7 days of annual leave after completing your first year of service [S1].\n*   **Company policy (Acme Pte Ltd):** Confirmed employees are entitled to 16 days of annual leave per calendar year [S2]. \n\nAs Acme Pte Ltd's policy provides 16 days, it exceeds the statutory minimum of 7 days required under the Employment Act [S1, S2]. \n\nPlease note that statutory entitlement for annual leave requires at least 3 months of service [S1]. For Acme Pte Ltd, annual leave is prorated if you join mid-year [S2]. You may wish to verify the specific application of the \"confirmed employee\" status with HR, as the company handbook specifies this entitlement applies to confirmed employees [S2], and the probation period is typically 3 months [S7].",
+    "retrieved": [
+      "S1: Annual Leave — Eligibility and Entitlement",
+      "S2: Acme Pte Ltd Employee Handbook > Annual Leave",
+      "S3: Annual Leave — Eligibility and Entitlement",
+      "S4: Acme Pte Ltd Employee Handbook > Sick Leave",
+      "S5: Acme Pte Ltd Employee Handbook > Notice Period",
+      "S6: Termination with Notice",
+      "S7: Acme Pte Ltd Employee Handbook > Probation",
+      "S8: Sick Leave — Eligibility and Entitlement"
+    ]
+  },
+  {
+    "id": "n04",
+    "category": "not_covered",
+    "question": "What is the minimum wage in Singapore?",
+    "shouldRefuse": true,
+    "topSimilarity": 0.636773206995322,
+    "retrievalHit": null,
+    "citationOk": null,
+    "answerCorrect": null,
+    "refusalOk": true,
+    "pass": true,
+    "failReasons": [],
+    "answer": "The provided excerpts do not mention a national minimum wage in Singapore.\n\nPlease note that this information is absent from the reference documents provided; you may wish to verify current national wage policies directly with the Ministry of Manpower (MOM) or check if your specific industry is covered by a Progressive Wage Model (PWM), which sets sector-specific wage floors.",
+    "retrieved": [
+      "S1: How Do I Pay My CPF Contributions? > How Do I Pay My CPF Contributions?",
+      "S2: Hours of Work, Overtime and Rest Days",
+      "S3: Maternity Leave — Eligibility and Entitlement",
+      "S4: Acme Pte Ltd Employee Handbook > Retrenchment Benefits",
+      "S5: Public Holidays — Entitlement and Pay",
+      "S6: Public Holidays — Entitlement and Pay",
+      "S7: Hours of Work, Overtime and Rest Days",
+      "S8: Hours of Work, Overtime and Rest Days"
+    ]
+  }
+]
