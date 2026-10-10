@@ -117,9 +117,13 @@ async function main() {
   const onlyArg = process.argv.find((a) => a.startsWith('--only='));
   const only = onlyArg ? onlyArg.slice('--only='.length).split(',') : null;
 
-  const all: EvalQuestion[] = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), 'eval/questions.json'), 'utf-8')
-  );
+  const fileArg = process.argv.find((a) => a.startsWith('--file='));
+  const file = fileArg ? fileArg.slice('--file='.length) : 'eval/questions.json';
+  const label = path.basename(file, '.json');
+  const prefix = label === 'questions' ? '' : `${label}-`;
+
+  const all: EvalQuestion[] = JSON.parse(fs.readFileSync(path.join(process.cwd(), file), 'utf-8'));
+
   const questions = only ? all.filter((q) => only.includes(q.id)) : all;
 
   console.log(`Running ${questions.length} questions | answer model: ${ANSWER_MODEL} | judge model: ${JUDGE_MODEL}\n`);
@@ -240,7 +244,7 @@ async function main() {
   lines.push('');
   lines.push('| Category | Pass |');
   lines.push('|---|---|');
-  for (const cat of ['statutory', 'handbook', 'conflict', 'not_covered', 'injection']) {
+  for (const cat of ['statutory', 'handbook', 'conflict', 'not_covered', 'injection', 'hard']) {
     const inCat = results.filter((r) => r.category === cat);
     if (inCat.length) lines.push(`| ${cat} | ${pct(inCat.filter((r) => r.pass).length, inCat.length)} |`);
   }
@@ -280,9 +284,10 @@ async function main() {
   const dir = path.join(process.cwd(), 'eval/results');
   fs.mkdirSync(dir, { recursive: true });
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-  fs.writeFileSync(path.join(dir, `${stamp}.json`), JSON.stringify(results, null, 2));
-  fs.writeFileSync(path.join(dir, 'latest.md'), lines.join('\n') + '\n');
-  console.log(`\nSaved eval/results/${stamp}.json and eval/results/latest.md`);
+
+  fs.writeFileSync(path.join(dir, `${prefix}${stamp}.json`), JSON.stringify(results, null, 2));
+  fs.writeFileSync(path.join(dir, `${prefix}latest.md`), lines.join('\n') + '\n');
+  console.log(`\nSaved eval/results/${prefix}${stamp}.json and eval/results/${prefix}latest.md`);
 }
 
 main();

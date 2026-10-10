@@ -6,7 +6,7 @@ export const MATCH_COUNT = 8;
 
 // Refuse when the best raw vector similarity is below this value.
 // 0 means the gate is off until we tune it from the eval results.
-   export const MIN_SIMILARITY = Number(process.env.GATE_MIN_SIMILARITY ?? 0.62);
+   export const MIN_SIMILARITY = Number(process.env.GATE_MIN_SIMILARITY ?? 0.6);
 
 export const REFUSAL_MESSAGE =
   "I couldn't find anything in the policy sources that answers this question. Please check with MOM, CPF Board, or your HR contact.";
