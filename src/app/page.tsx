@@ -74,6 +74,14 @@ function SourceBadge({ type }: { type: Source['sourceType'] }) {
   );
 }
 
+function friendlyError(err: Error) {
+  try {
+    const parsed = JSON.parse(err.message);
+    if (parsed?.error) return parsed.error as string;
+  } catch {}
+  return 'Something went wrong while answering. Please try again in a moment.';
+}
+
 export default function Home() {
   const { messages, sendMessage, status, error } = useChat({
     transport: new DefaultChatTransport({ api: '/api/ask' }),
@@ -219,11 +227,11 @@ export default function Home() {
             </div>
           )}
 
-          {error && (
-            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300">
-              Something went wrong while answering. Please try again in a moment.
-            </div>
-          )}
+{error && (
+  <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300">
+    {friendlyError(error)}
+  </div>
+)}
 
           <div ref={bottomRef} />
         </div>
@@ -249,7 +257,7 @@ export default function Home() {
           </form>
           <p className="mt-2 text-center text-[11px] text-slate-400 dark:text-slate-500">
             Informational only, not legal advice. Demo built on public MOM/CPF pages and a fictional
-            handbook. Please don&apos;t enter personal information.
+handbook. Questions are logged anonymously to evaluate the demo, so please don&apos;t enter personal information.
           </p>
         </div>
       </footer>
